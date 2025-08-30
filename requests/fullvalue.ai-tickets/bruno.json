@@ -1,0 +1,9 @@
+{
+  "version": "1",
+  "name": "fullvalue.ai-barets",
+  "type": "collection",
+  "ignore": [
+    "node_modules",
+    ".git"
+  ]
+}

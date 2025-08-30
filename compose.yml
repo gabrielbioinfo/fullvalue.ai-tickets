@@ -1,0 +1,29 @@
+services:
+  redis:
+    image: redis:7.2
+    ports:
+      - "6379:6379"
+    restart: always
+    networks:
+      - barsnet
+  bars:
+    build:
+      context: .
+      dockerfile: Dockerfile.bars
+    command: uvicorn app.main:app --host 0.0.0.0 --port 8000 --reload
+    volumes:
+      - .:/app
+    ports:
+      - "8000:8000"
+    depends_on:
+      - redis
+    networks:
+      - barsnet
+    environment:
+      - REDIS_HOST=redis
+      - REDIS_PORT=6379
+      - REDIS_DB=0
+
+networks:
+  barsnet:
+    driver: bridge

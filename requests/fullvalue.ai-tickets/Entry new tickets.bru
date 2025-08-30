@@ -1,0 +1,43 @@
+meta {
+  name: Entry new barets
+  type: http
+  seq: 1
+}
+
+post {
+  url: http://localhost:8000/api/v1/bars
+  body: json
+  auth: inherit
+}
+
+body:json {
+  {
+    "items": [
+      {
+        "tf": "1m",
+        "frame_type": "bar",
+        "tf_s": 60,
+        "market_type": "centralized",
+        "venue_id": "B3",
+        "venue_symbol": "BOVA11",
+        "instrument_uid": "B3:BOVA11",
+        "provider": "binance-ws-kline",
+        "window_start_ms": 1725012360000,
+        "window_end_ms": 1725012419999,
+        "is_final": true,
+        "open": 120.32,
+        "high": 120.41,
+        "low": 120.30,
+        "close": 120.35,
+        "volume": 187,
+        "ts_emit_ms": 1725012420050,
+        "quality": {"filled": true, "had_gap": false},
+        "imbalance_dir": "up"
+      }
+    ]
+  }
+}
+
+settings {
+  encodeUrl: true
+}
